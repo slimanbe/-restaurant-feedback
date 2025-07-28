@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قيّم تجربتك معنا</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 1rem 0;
+    }
+    .star {
+      font-size: 2rem;
+      cursor: pointer;
+      color: #ccc;
+    }
+    .star.selected {
+      color: gold;
+    }
+    button {
+      background: #2196f3;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>كيف كانت تجربتك؟</h2>
+    <div class="stars" id="stars">
+      <span class="star" data-value="1">⭐</span>
+      <span class="star" data-value="2">⭐</span>
+      <span class="star" data-value="3">⭐</span>
+      <span class="star" data-value="4">⭐</span>
+      <span class="star" data-value="5">⭐</span>
+    </div>
+    <button id="submitBtn">إرسال التقييم</button>
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('.star');
+    const submitBtn = document.getElementById('submitBtn');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-value'));
+        updateStarStyles();
+      });
+    });
+
+    function updateStarStyles() {
+      stars.forEach(star => {
+        const value = parseInt(star.getAttribute('data-value'));
+        if (value <= selectedRating) {
+          star.classList.add('selected');
+        } else {
+          star.classList.remove('selected');
+        }
+      });
+    }
+
+    submitBtn.addEventListener('click', () => {
+      if (selectedRating === 0) {
+        alert('من فضلك اختر تقييمك أولاً');
+        return;
+      }
+      if (selectedRating >= 4) {
+        window.location.href = "https://www.google.com/maps/place/YOUR_BUSINESS_HERE";
+      } else {
+        window.location.href = "feedback.html";
+      }
+    });
+  </script>
+</body>
+</html>
