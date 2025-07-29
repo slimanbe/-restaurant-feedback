@@ -3,100 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قيّم تجربتك معنا</title>
+  <title>تقييم مطعم</title>
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background: #f4f4f4;
-      text-align: center;
-      padding: 2rem;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      max-width: 400px;
-      margin: auto;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-bottom: 1rem;
-    }
+    body { font-family: Arial, sans-serif; text-align: center; padding: 30px; background: #f8f8f8; }
+    h2 { color: #333; }
     .stars {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 1rem 0;
+      direction: rtl;
+      display: inline-flex;
+      font-size: 2em;
+      cursor: pointer;
     }
     .star {
-      font-size: 2rem;
-      cursor: pointer;
       color: #ccc;
+      transition: color 0.3s;
     }
-    .star.selected {
-      color: gold;
-    }
-    button {
-      background: #2196f3;
-      color: white;
-      border: none;
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-    button:hover {
-      background: #1976d2;
-    }
+    .star:hover, .star.hovered { color: gold; }
+    .thank-you { display: none; margin-top: 20px; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2>كيف كانت تجربتك؟</h2>
-    <div class="stars" id="stars">
-      <span class="star" data-value="1">⭐</span>
-      <span class="star" data-value="2">⭐</span>
-      <span class="star" data-value="3">⭐</span>
-      <span class="star" data-value="4">⭐</span>
-      <span class="star" data-value="5">⭐</span>
-    </div>
-    <button id="submitBtn">إرسال التقييم</button>
+  <h2>ما رأيك في تجربتك معنا؟</h2>
+  <div class="stars" id="starContainer">
+    <span class="star" data-value="5">★</span>
+    <span class="star" data-value="4">★</span>
+    <span class="star" data-value="3">★</span>
+    <span class="star" data-value="2">★</span>
+    <span class="star" data-value="1">★</span>
   </div>
+  <div class="thank-you" id="thanks">شكراً على تقييمك!</div>
 
   <script>
     const stars = document.querySelectorAll('.star');
-    const submitBtn = document.getElementById('submitBtn');
-    let selectedRating = 0;
-
+    const thanks = document.getElementById('thanks');
     stars.forEach(star => {
-      star.addEventListener('click', () => {
-        selectedRating = parseInt(star.getAttribute('data-value'));
-        updateStarStyles();
-      });
-    });
-
-    function updateStarStyles() {
-      stars.forEach(star => {
+      star.addEventListener('mouseover', () => {
         const value = parseInt(star.getAttribute('data-value'));
-        if (value <= selectedRating) {
-          star.classList.add('selected');
-        } else {
-          star.classList.remove('selected');
-        }
+        stars.forEach(s => {
+          s.classList.toggle('hovered', parseInt(s.getAttribute('data-value')) <= value);
+        });
       });
-    }
+      star.addEventListener('click', () => {
+        const rating = parseInt(star.getAttribute('data-value'));
+        thanks.style.display = 'block';
 
-    submitBtn.addEventListener('click', () => {
-      if (selectedRating === 0) {
-        alert('من فضلك اختر تقييمك أولاً');
-        return;
-      }
-      if (selectedRating >= 4) {
-        window.location.href = "https://www.google.com/maps/place/YOUR_BUSINESS_HERE";
-      } else {
-        window.location.href = "https://slimanbe.github.io/reviews/";
-      }
+        setTimeout(() => {
+          if (rating >= 4) {
+            window.location.href = "https://g.page/YOUR-RESTAURANT-LINK/review"; // رابط تقييم جوجل
+          } else {
+            window.location.href = " https://slimanbe.github.io/reviews/"; // صفحة الملاحظات
+          }
+        }, 1500);
+      });
     });
   </script>
 </body>
