@@ -1,60 +1,51 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تقييم مطعم</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 30px; background: #f8f8f8; }
-    h2 { color: #333; }
-    .stars {
-      direction: rtl;
-      display: inline-flex;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    .star {
-      color: #ccc;
-      transition: color 0.3s;
-    }
-    .star:hover, .star.hovered { color: gold; }
-    .thank-you { display: none; margin-top: 20px; }
-  </style>
+    <meta charset="UTF-8">
+    <title>تحميل لعبة GTA 5 للأندرويد</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 650px;
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .instructions {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h2>ما رأيك في تجربتك معنا؟</h2>
-  <div class="stars" id="starContainer">
-    <span class="star" data-value="5">★</span>
-    <span class="star" data-value="4">★</span>
-    <span class="star" data-value="3">★</span>
-    <span class="star" data-value="2">★</span>
-    <span class="star" data-value="1">★</span>
-  </div>
-  <div class="thank-you" id="thanks">شكراً على تقييمك!</div>
 
-  <script>
-    const stars = document.querySelectorAll('.star');
-    const thanks = document.getElementById('thanks');
-    stars.forEach(star => {
-      star.addEventListener('mouseover', () => {
-        const value = parseInt(star.getAttribute('data-value'));
-        stars.forEach(s => {
-          s.classList.toggle('hovered', parseInt(s.getAttribute('data-value')) <= value);
-        });
-      });
-      star.addEventListener('click', () => {
-        const rating = parseInt(star.getAttribute('data-value'));
-        thanks.style.display = 'block';
+<div class="container">
+    <div class="title">تحميل لعبة GTA 5 للأندرويد 2025</div>
+    <div class="instructions">يرجى إكمال عرض واحد فقط لفتح رابط التحميل.</div>
 
-        setTimeout(() => {
-          if (rating >= 4) {
-            window.location.href = "https://g.page/YOUR-RESTAURANT-LINK/review"; // رابط تقييم جوجل
-          } else {
-            window.location.href = " https://slimanbe.github.io/feedback/"; // صفحة الملاحظات
-          }
-        }, 1500);
-      });
-    });
-  </script>
+    <!-- 🔒 iframe Content Locker -->
+    <iframe src="https://www.cpagrip.com/show.php?l=YOUR_LOCKER_ID_HERE"></iframe>
+
+</div>
+
 </body>
 </html>
